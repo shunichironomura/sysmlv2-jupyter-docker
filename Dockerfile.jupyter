@@ -28,9 +28,9 @@ ENV NB_UID ${NB_UID}
 ENV HOME /home/${NB_USER}
 
 RUN adduser --disabled-password \
-    --gecos "Default user" \
-    --uid ${NB_UID} \
-    ${NB_USER}
+  --gecos "Default user" \
+  --uid ${NB_UID} \
+  ${NB_USER}
 
 USER root
 RUN chown -R ${NB_UID} ${HOME}
@@ -57,7 +57,7 @@ RUN wget -q https://github.com/Systems-Modeling/SysML-v2-Release/archive/${RELEA
 ## Install MiniConda
 RUN chmod 755 ${HOME}/Miniconda3-latest-Linux-x86_64.sh
 RUN mkdir ${HOME}/conda
-RUN ${HOME}/Miniconda3-latest-Linux-x86_64.sh -f -b -p ${HOME}/conda
+RUN /bin/bash ${HOME}/Miniconda3-latest-Linux-x86_64.sh -f -b -p ${HOME}/conda
 RUN ${HOME}/conda/condabin/conda init
 
 ## Unpack SysML
